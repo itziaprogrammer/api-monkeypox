@@ -1,0 +1,29 @@
+name: Docker Build & Publish
+
+on: 
+  push: 
+    branches: 
+      - main
+
+jobs:
+  build-and-push: 
+    runs-on: ubuntu-latest
+    steps: 
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}"
+      
+      - name: Build Docker Image
+        run: docker build -t itziaprogrammer/api-monkeypox:${{ github.sha }} .
+
+      - name: Tag Latest
+        run: docker tag itziaprogrammer/api-monkeypox:${{ github.sha }} itziaprogrammer/api-monkeypox:latest
+
+
+      - name: Push Docker Image
+        run: |
+          docker push itziaprogrammer/api-monkeypox:${{ github.sha }}
+          docker push itziaprogrammer/api-monkeypox:latest
