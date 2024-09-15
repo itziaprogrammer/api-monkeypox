@@ -7,6 +7,7 @@ export class CasesRoutes {
     const casesController = new CasesController();
 
     router.get('', casesController.getCases);
+    router.post('', casesController.saveCase); 
 
     return router;
   }
