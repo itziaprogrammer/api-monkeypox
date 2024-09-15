@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  # api-monkeypox:
+  #   image: itziaprogrammer/api-monkeypox:latest
+  #   container_name: api-monkeypox
+  #   environment: 
+  #     PORT: ${PORT}
+  #     MONGO_URL: ${MONGO_URL_DOCKER}
+  #     MONGO_DB: ${MONGO_DB}
+  #     MAILER_SERVICE: ${MAILER_SERVICE}
+  #     MAILER_ACCESS_TOKEN: ${MAILER_ACCESS_TOKEN}
+  #     MAILER_EMAIL: ${MAILER_EMAIL}
+  #     MAPBOX_ACCESS_TOKEN: ${MAPBOX_ACCESS_TOKEN}
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - mongo
+
+  mongo: 
+    image: mongo
+    container_name: mongo-monkeypox
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_db:/data/db
+
+volumes:
+  mongo_db:
