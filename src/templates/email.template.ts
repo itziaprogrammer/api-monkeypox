@@ -79,7 +79,7 @@ export function generateCaseEmailTemplate(
 
           <div class="footer">
               <p>Este es un correo generado automáticamente. Por favor, no responda a este mensaje.</p>
-          </div>
+          </div>.
       </div>
   </body>
   </html>
