@@ -10,6 +10,7 @@ export class CasesRoutes {
     router.get('/:id', casesController.getCaseById);
     router.post('', casesController.saveCase); 
     router.put('/:id', casesController.updateCaseById);
+    router.delete('/:id', casesController.deleteCaseById);
 
     return router;
   }
