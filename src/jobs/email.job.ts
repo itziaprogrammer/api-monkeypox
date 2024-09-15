@@ -3,6 +3,7 @@ import { generateCaseEmailTemplate } from "../templates/email.template";
 import { CasesModel } from "../data/models/cases.model";
 import { CaseDataSource } from "../domain/datasources/CaseDataSource";
 import { EmailService } from "../services/email.service";
+import { envs } from "../config/envs";
 
 export const emailJob = () => {
   const emailService = new EmailService();
@@ -26,7 +27,7 @@ export const emailJob = () => {
           c.lng
         );
         await emailService.sendEmail({
-          to: "emiperez.dev@gmail.com",
+          to: envs.MAILER_EMAIL_DESTINATION,
           subject: `Case: ${c._id}`,
           htmlBody: htmlBody,
         });
