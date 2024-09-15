@@ -1,3 +1,4 @@
+import 'express-async-errors';
 import { envs } from "./config/envs";
 import { MongoDatabase } from "./data/init";
 import app from "./start/app";
